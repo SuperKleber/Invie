@@ -5,14 +5,30 @@
     <title>precios de tus mejores Guitarras</title>
     <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="CSS/invie.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style media="screen">
+      @media screen and (max-width: 500px)
+      {
+        .imagen
+        {
+          margin-bottom: 50px;
+        }
+        .footer
+        {
+          margin-top: 50px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="imagen2">
+    <div class="imagen">
       <header id="header" >
         <a href="index.html"  class="logotipo"> <!-- LogoTipo-->
           <img src="Images/invie.png" width="186" height="60" alt="Invie Logotipo">
         </a>
-        <nav class="menu"><!-- Menú-->
+        <span id="burger" class="burger icon-menu">
+        </span>
+        <nav class="menu" id="menu"><!-- Menú-->
           <ul> <!-- Lista desordenada-->
             <li>
               <a href="index.html">Home</a>
@@ -35,33 +51,48 @@
       </div>
     </section>
     </div>
-    <div class="contenedor">
-      <section class="tabla">
+    <div class="tabla">
+      <section class="contenedor-tabla">
       <table>
         <thead>
           <tr>
             <th>Modelo</th>
             <th>Precio</th>
             <th>Descripción</th>
+            <th>Modelo</th>
+            <th>Precio</th>
+            <th>Descripción</th>
           </tr>
+
         </thead>
         <tbody>
           <tr>
             <td>Invie Clasicc</td>
             <td>$1000</td>
             <td> La mera ostia</td>
+            <td>Invie Clasicc</td>
+            <td>$1000</td>
+            <td> La mera ostia</td>
+
           </tr>
           <tr>
             <td>Invie Clasicc</td>
             <td>$1000</td>
             <td> La mera ostia</td>
+            <td>Invie Clasicc</td>
+            <td>$1000</td>
+            <td> La mera ostia</td>
           </tr>
           <tr>
+            <td>Invie Clasicc</td>
+            <td>$1000</td>
+            <td> La mera ostia</td>
             <td>Invie Clasicc</td>
             <td>$1000</td>
             <td> La mera ostia</td>
           </tr>
         </tbody>
+
       </table>
     </section>
     </div>
@@ -116,5 +147,45 @@
         </div>
       </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js">
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js">
+
+    </script>
+    <script>
+      let consulta= window.matchMedia("(max-width:500px)");
+
+      const mq= ()=>
+      {
+        if (consulta.matches)
+        {
+          console.log("Se cumplió")
+          burger.addEventListener("touchstart",toggle)
+        }
+        else
+        {
+          burger.removeEventListener("touchstart",toggle)
+          console.log("NO Se cumplió")
+        }
+      }
+      consulta.addListener(mq)
+      const burger= document.getElementById("burger");
+      const menu = document.getElementById("menu");
+      const toggle = () => menu.classList.toggle("active");
+      // burger.addEventListener("touchstart",()=>menu.classList.toggle("active"))
+      // menu.classList.toggle("active")
+      // menu.classList.add("active")
+      mq();
+      //LAZY
+      var blazy = new Blazy
+      ({
+        selector: "img"
+      });
+      const body= document.body;
+      let gestoSwipe= new Hammer(body);
+      gestoSwipe.on("swipeleft", ()=> menu.classList.remove("active"));
+      gestoSwipe.on("swiperight", ()=> menu.classList.add("active"));
+    </script>
   </body>
 </html>
